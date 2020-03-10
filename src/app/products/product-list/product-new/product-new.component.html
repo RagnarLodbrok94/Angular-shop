@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>New product</h1>
+<div mat-dialog-content>
+  <form class="form-centered" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field class="form-group">
+      <input matInput placeholder="Product image" formControlName="image" [errorStateMatcher]="errorMatcher"> 
+      <mat-error *ngIf="form.get('image').invalid && form.get('image').errors.required">
+        Product image is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-group">
+      <input matInput placeholder="Product name" formControlName="name" [errorStateMatcher]="errorMatcher">
+      <mat-error *ngIf="form.get('name').invalid && form.get('name').errors.required">
+        Product name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-group">
+      <input matInput placeholder="Product price" type="number" formControlName="price" [errorStateMatcher]="errorMatcher">
+      <span matPrefix>$&nbsp;</span>
+      <span matSuffix>.00</span>
+      <mat-error *ngIf="form.get('price').invalid && form.get('price').errors.required">
+        Product price is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <button type="submit" class="btn-block"
+      mat-raised-button color="primary"
+      [disabled]="form.invalid || submitted">Create new product</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

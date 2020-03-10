@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a class='logo' routerLink="">
+      <img src="./../../assets/images/logo.png" alt="">
+    </a>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="aboveMenu">Shop</button>
+    <mat-menu #aboveMenu="matMenu" yPosition="above">
+      <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" mat-menu-item>Products</a>
+      <a routerLink="/product-page" routerLinkActive="active" mat-menu-item>Product page</a>
+      <a routerLink="/cart" routerLinkActive="active" mat-menu-item>Cart</a>
+      <a routerLink="/checkout" routerLinkActive="active" mat-menu-item>Checkout</a>
+    </mat-menu>
+    <a routerLink="/cart" mat-icon-button>
+      <mat-icon matBadge={{quantity}} matBadgeColor="warn">shopping_basket</mat-icon>
+    </a>
+    <div *ngIf="auth.isAuthenticated(); else noAuth">
+      <a mat-button (click)="logout($event)">Logout</a>
+    </div>
+    <ng-template #noAuth>
+      <a routerLink="/auth/login" routerLinkActive="active" mat-button>Login</a>
+    </ng-template>
+  </mat-toolbar-row>
+</mat-toolbar>

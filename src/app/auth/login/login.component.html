@@ -1,0 +1,31 @@
+<h1>Login</h1>
+<form class="form-centered" [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field class="form-group">
+    <input matInput placeholder="Email" formControlName="email" [errorStateMatcher]="errorMatcher">
+    <mat-error *ngIf="form.get('email').invalid && form.get('email').errors.required">
+      Email is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('email').invalid && form.get('email').errors.email">
+      Please enter a valid email address
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-group">
+    <input matInput placeholder="Password" formControlName="password" [errorStateMatcher]="errorMatcher" [type]="hide ? 'password' : 'text'">
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="form.get('password').invalid && form.get('password').errors.required">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <button type="submit" class="btn-block"
+    mat-raised-button color="primary"
+    [disabled]="form.invalid || submitted">Sign in</button>
+  <div class="group-20 d-flex flex-wrap align-items-center justify-content-between mt-1">
+    <p>Don't have an account yet?</p>
+    <div>
+      <a (click)="goToRegister($event)" mat-button color="primary">Register now</a>
+    </div>
+  </div>
+</form>
+

@@ -1,0 +1,25 @@
+.example-card {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 270px;
+}
+
+.example-card + .example-card {
+  margin-left: 40px;
+}
+
+.mat-card-header {
+  display: block;
+}
+
+.mat-card-header .mat-card-title {
+  font-size: 16px;
+}
+
+.mat-card-image:first-child {
+  margin-top: 0;
+}
+
+.mat-card-actions {
+  padding-top: 0;
+}

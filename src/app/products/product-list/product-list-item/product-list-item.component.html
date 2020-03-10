@@ -1,0 +1,21 @@
+<mat-card class="example-card">
+  <img mat-card-image src={{product.imageUrl}} alt="iphone">
+  <mat-card-header>
+    <mat-card-title>{{ product.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ product.price | currency }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div>
+      <button mat-button (click)="addCart(product)">Add cart</button>
+      <button mat-button>View</button>
+    </div>
+    <div *ngIf="auth.isAuthenticated()">
+      <button mat-button color="primary" (click)="edit(product)">Edit</button>
+      <button mat-button color="accent" (click)="remove(product.id)">Remove</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
